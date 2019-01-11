@@ -20,7 +20,7 @@ class SingerItem extends PureComponent {
 
   onPress = () => {
     const { navigation, item } = this.props
-    navigation.navigate(SCREENS.SingerSongListPage, { singerId: item.singer-id })
+    navigation.navigate(SCREENS.SingerSongListPage, { singerId: item.singerId })
   }
 
   componentDidMount() {
@@ -33,7 +33,8 @@ class SingerItem extends PureComponent {
       itemHeight
     } = this.props
 
-    const url = `../../../assets/Resources/Singers/${item.singer-avatar}`
+    const url = '../../../assets/Resources/Singers/' + item.singerAvatar
+    const temp = 'http://hashtaglegend.com/storage/app/media/will-i-am-dec-cover-story-6.jpg'
 
     return (
       <TouchableOpacity
@@ -47,11 +48,11 @@ class SingerItem extends PureComponent {
       >
         <Image
           style={{ height: 130, width: '100%' }}
-          source={{uri: url}}
+          source={{uri: temp}}
         />
-        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ marginBottom: 0, textAlign: 'center' }}>
-            {`${item.singer-name}`}
+        <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor:'#35A85A', padding: 5 }}>
+          <Text style={{ marginBottom: 0, textAlign: 'center', color: '#ffffff' }}>
+            {`${item.singerName}`}
           </Text>
         </View>
       </TouchableOpacity>

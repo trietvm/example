@@ -8,12 +8,12 @@ const mapDispatchToProps = (dispatch, props) => ({
     getSingerSong: async (singerId) => {
     var data = require('../../assets/Resources/Singers/Data.json')
     var singerSongs = []
-    singerSongs = data.vi-songs.filter(item => {
-        item.singer-id === singerId
+    singerSongs = data.viSongs.filter(item => {
+        item.singerId === singerId
     })
     if(singerSongs.length === 0){
-        singerSongs = data.en-songs.filter(item => {
-            item.singer-id === singerId
+        singerSongs = data.enSongs.filter(item => {
+            item.singerId === singerId
         })
     }
     dispatch(getSingerSong(singerSongs))

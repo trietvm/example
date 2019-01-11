@@ -14,7 +14,7 @@ import SingerItem from '../../common/components/widgets/SingerItem'
 
 const { width } = Dimensions.get('window')
 const ITEM_WITDH = (width) / 3
-const ITEM_HEIGHT = 190
+const ITEM_HEIGHT = 170
 
 class PageSinger extends PureComponent {
   constructor(props) {
@@ -33,11 +33,12 @@ class PageSinger extends PureComponent {
     })
   }
 
-  _keyExtractor = (item, index) => item.id
+  _keyExtractor = (item, index) => item.singerId
 
-  _renderItem = ({ item }) => {
+  _renderItem = ({ item, index }) => {
     return (
       <SingerItem
+        index={index}
         item={item}
         itemWidth={ITEM_WITDH}
         itemHeight={ITEM_HEIGHT}

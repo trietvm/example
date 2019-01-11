@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 // import { NavigationActions } from 'react-navigation'
 // import { SCREENS } from '../../screens'
-import { View, Animated, Easing, StyleSheet } from 'react-native'
+import { View, Animated, Easing, StyleSheet, Image } from 'react-native'
 
 export default class FadeLoadingPage extends PureComponent {
   constructor (props) {
@@ -55,7 +55,7 @@ export default class FadeLoadingPage extends PureComponent {
     // })
     return (
       <View style={styles.container}>
-        <Animated.Image
+        <Image
           resizeMode={'cover'}
           style={[styles.image]}
           source={require('../../../assets/Resources/Default.png')}

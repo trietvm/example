@@ -2,26 +2,74 @@
 import { connect } from 'react-redux'
 import PageDetailSong from '../components/PageDetailSong'
 import { MODULE_NAME } from '../models'
-import { getSongDetail } from '../actions'
+import { getSongDetail, getFavoriteMusic } from '../actions'
 
 const mapDispatchToProps = (dispatch, props) => ({
-    getSongDetail: async (songCode) => {
+    getSongDetail: async (songCode, favoriteMusicList) => {
+    var lists = []
+    var singers = [] 
+    var data = require('../../assets/Resources/Singers/Data.json')
+    lists = data.viSongs.filter(item => 
+        item.songCode === songCode
+    )
+    if(lists.length === 0){
+        lists = data.enSongs.filter(item => 
+            item.songCode === songCode
+        )
+    }
+    singers = data.singers.filter(item => 
+        item.singerId === lists[0].singerId
+    )
+    console.log("favoriteMusicList", favoriteMusicList)
+    // favoriteMusicList.length > 0 && favoriteMusicList.map(item => {
+    //     if(item.songCode === songCode){
+    //         lists[0].isLike = true
+    //     }
+    // })
+    console.log("list", lists[0])
+    lists[0].singer = singers[0]
+
+    dispatch(getSongDetail(lists[0]))
+  },
+  toggleLike: async (songCode, favoriteMusicList) => {
     var lists = []
     var data = require('../../assets/Resources/Singers/Data.json')
-    lists = data.vi-songs.filter(item => {
-        item.song-code === songCode
-    })
+    lists = data.viSongs.filter(item => 
+        item.songCode === songCode
+    )
     if(lists.length === 0){
-        lists = data.en-songs.filter(item => {
-            item.song-code === songCode
-        })
+        lists = data.enSongs.filter(item => 
+            item.songCode === songCode
+        )
     }
-    dispatch(getSongDetail(lists[0]))
+    console.log("favoriteMusicList", favoriteMusicList)
+    console.log("lists[0]", lists[0])
+    favoriteMusicList.push(lists[0])
+    console.log("push", favoriteMusicList)
+    dispatch(getFavoriteMusic(favoriteMusicList))
+  },
+  toggleNotLike: async (songCode, favoriteMusicList) => {
+    var lists = []
+    var data = require('../../assets/Resources/Singers/Data.json')
+    lists = data.viSongs.filter(item => 
+        item.songCode === songCode
+    )
+    if(lists.length === 0){
+        lists = data.enSongs.filter(item => 
+            item.songCode === songCode
+        )
+    }
+    console.log("favoriteMusicList", favoriteMusicList)
+    console.log("lists[0]", lists[0])
+    favoriteMusicList.length > 0 && favoriteMusicList.splice(favoriteMusicList.indexOf(lists[0]), 1)
+    console.log("splice", favoriteMusicList)
+    dispatch(getFavoriteMusic(favoriteMusicList))
   }
 })
 
 const mapStateToProps = state => ({
-    songDetail: state[MODULE_NAME].songDetail
+    songDetail: state[MODULE_NAME].songDetail,
+    favoriteMusicList: state[MODULE_NAME].favoriteMusicList
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageDetailSong)

@@ -5,10 +5,9 @@ import { MODULE_NAME } from '../models'
 import { getVietNamMusic } from '../actions'
 
 const mapDispatchToProps = (dispatch, props) => ({
-  getVietNamMusic: async () => {
+  getVietNamMusic: () => {
     var data = require('../../assets/Resources/Singers/Data.json')
-    dispatch(getVietNamMusic(data.vi-songs))
-    console.log("data", data)
+    dispatch(getVietNamMusic(data.viSongs))
   }
 })
 

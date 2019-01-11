@@ -13,7 +13,7 @@ import SongItem from '../../common/components/widgets/SongItem'
 
 const { width } = Dimensions.get('window')
 const ITEM_WITDH = width
-const ITEM_HEIGHT = 100
+const ITEM_HEIGHT = 80
 
 export default class PageSingerSong extends Component {
   constructor(props) {
@@ -43,11 +43,12 @@ export default class PageSingerSong extends Component {
   _onLoadMore = async () => {
   }
 
-  _keyExtractor = (item) => item.id
+  _keyExtractor = (item) => item.songCode
 
-  _renderItem = ({ item }) => {
+  _renderItem = ({ item, index }) => {
     return  (
     <SongItem
+      index={index}
       item={item}
       itemWith={ITEM_WITDH}
       itemHeight={ITEM_HEIGHT}

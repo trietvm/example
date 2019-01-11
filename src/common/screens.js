@@ -11,7 +11,7 @@ import { Icon, Badge } from 'react-native-elements'
 import LoadingPage from '../screens/LoadingPage'
 
 import VietNamMusicPage from '../screens/VietNamMusicPage'
-import ForeignMusicPage from '../screens/ForeignMusicPage'
+import ForeignMusicPage from '../screens/ForeignMusicPage'
 import FavoriteMusicPage from '../screens/FavoriteMusicPage'
 import SingerListPage from '../screens/SingerListPage'
 import InformationPage from '../screens/InformationPage'

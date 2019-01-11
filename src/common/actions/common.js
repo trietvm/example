@@ -7,3 +7,6 @@ export const loadEnd = createAction('loading_end')
 export const fetchStart = createAction('api_fetchStart')
 export const fetchSuccess = createAction('api_fetchSuccess')
 export const fetchFailure = createAction('api_fetchFailure')
+
+export const updateSetting = createAction('updateSetting')
+export const updateSettingProperties = createAction('updateSettingProperties')

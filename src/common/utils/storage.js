@@ -24,10 +24,14 @@ class Storage {
 
   init (store = 'state') {
     this.store = store
-    return new Promise(async (resolve, reject) => {
+    var promise1 = new Promise(async (resolve, reject) => {
       this.cache = await getState(this.store)
       resolve()
     })
+    promise1.catch(function(error) {
+      console.log(error);
+    })
+    return promise1
   }
 
   getStoreName () {

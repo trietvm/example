@@ -7,7 +7,7 @@ import { getForeignMusic } from '../actions'
 const mapDispatchToProps = (dispatch, props) => ({
     getForeignMusic: async () => {
     var data = require('../../assets/Resources/Singers/Data.json')
-    dispatch(getForeignMusic(data.en-songs))
+    dispatch(getForeignMusic(data.enSongs))
   }
 })
 

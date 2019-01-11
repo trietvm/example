@@ -9,8 +9,6 @@ export default class Loading extends Component {
     const {
       navigation
     } = this.props
-    await Promise.all([
-    ])
     navigation.navigate(SCREENS.TabStack)
   }
   render () {

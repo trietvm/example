@@ -20,7 +20,7 @@ class SongItem extends PureComponent {
 
   onPress = () => {
     const { navigation, item } = this.props
-    navigation.navigate(SCREENS.SongDetailPage, { song: item })
+    navigation.navigate(SCREENS.SongDetailPage, { songCode: item.songCode })
   }
 
   componentDidMount() {
@@ -49,15 +49,18 @@ class SongItem extends PureComponent {
           style={{ height: itemHeight, width: itemHeight, 
             backgroundColor: '#35A85A', alignContent: 'center', alignItems: 'center', justifyContent: 'center' }}
         >
-          <Text style={{ color: '#FFFFFF', fontSize: 16}}>
-            {`${item.song-code}`}
+          <Text style={{ color: '#FFFFFF', fontSize: 22, fontWeight: 'bold'}}>
+            {`${item.songCode}`}
           </Text>
         </View>
-        <View style={{ alignItems: 'center', flexDirection: 'column', marginLeft: 10 }}>
-          <Text style={{ fontSize: 15, textAlign: 'center' }}>
-            {`${item.song-name}`}
+        <View style={{flexDirection: 'column', marginLeft: 10, alignSelf: 'center' }}>
+          <Text style={{ fontSize: 17, marginBottom: 5, width: 230}}>
+            {`${item.songName.charAt(0).toUpperCase() + item.songName.slice(1)}`}
           </Text>
-          <Text style={{ marginBottom: 0, textAlign: 'center', width: itemWidth/3 }}>
+          <Text
+            numberOfLines= {1}
+            style={{ marginBottom: 0, width: 230 }}
+          >
             {`${item.lyrics}`}
           </Text>
         </View>

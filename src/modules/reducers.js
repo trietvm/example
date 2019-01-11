@@ -27,7 +27,7 @@ const handlers = {
   }),
   [actions.getFavoriteMusic]: (state, action) => ({
     ...state,
-    ...{ favoriteMusicList: action.payload }
+    favoriteMusicList: action.payload
   }),
   [actions.getInfo]: (state, action) => ({
     ...state,

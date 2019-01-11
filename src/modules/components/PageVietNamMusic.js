@@ -13,7 +13,7 @@ import SongItem from '../../common/components/widgets/SongItem'
 
 const { width } = Dimensions.get('window')
 const ITEM_WITDH = width
-const ITEM_HEIGHT = 100
+const ITEM_HEIGHT = 80
 
 export default class PageVietNamMusic extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export default class PageVietNamMusic extends Component {
   _onRefresh = () => {
     const { getVietNamMusic } = this.props
     this.setState({ refreshing: true }, async () => {
-      await getVietNamMusic()
+      getVietNamMusic()
       this.setState({ refreshing: false})
     })
   }
@@ -35,7 +35,7 @@ export default class PageVietNamMusic extends Component {
   componentWillMount() {
     const { getVietNamMusic } = this.props
     this.setState({ refreshing: true }, async () => {
-      await getVietNamMusic()
+      getVietNamMusic()
       this.setState({ refreshing: false })
     })
   }
@@ -43,11 +43,12 @@ export default class PageVietNamMusic extends Component {
   _onLoadMore = async () => {
   }
 
-  _keyExtractor = (item) => item.id
+  _keyExtractor = (item) => item.songCode
 
-  _renderItem = ({ item }) => {
+  _renderItem = ({ item, index }) => {
     return  (
     <SongItem
+      index={index}
       item={item}
       itemWith={ITEM_WITDH}
       itemHeight={ITEM_HEIGHT}
@@ -59,7 +60,6 @@ export default class PageVietNamMusic extends Component {
   render() {
     const { refreshing } = this.state
     const { musicLists } = this.props
-    console.log("musiclist", musicLists)
     return (
       <View
         style={{

@@ -8,8 +8,8 @@ export default ({
   navigation,
   onBack = null,
   title = 'MY KARA',
-  iconName = 'arrow-back',
-  iconType = undefined,
+  iconName = 'chevron-left',
+  iconType = 'font-awesome',
   onLike = null,
   focused = false
 }) => {
@@ -72,7 +72,9 @@ const styles = StyleSheet.create({
   },
   iconRight: {
     marginRight: 10,
-    zIndex: 99
+    zIndex: 99,
+    width: 25,
+    height: 25
   },
   title: {
     fontSize: 18,

@@ -28,11 +28,11 @@ class InitialPage extends PureComponent {
   render () {
     const { dispatch } = this.props
     // TODO: Loading page
-    // const navigation = ReactNavigation.addNavigationHelpers({
-    //   dispatch
-    // })
+    const navigation = ReactNavigation.addNavigationHelpers({
+      dispatch
+    })
     return [
-      <Navigator key='main' navigation={dispatch} />,
+      <Navigator key='main' navigation={navigation} />,
       <PageLoading.Component key='loading' global />,
       <ModalLoading.Component key='loading-modal' global />
     ]

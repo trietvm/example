@@ -5,8 +5,10 @@ import { MODULE_NAME } from '../models'
 const mapDispatchToProps = (dispatch, props) => ({
 })
 
-const mapStateToProps = state => ({
-  musicLists: state[MODULE_NAME].favoriteMusicList
-})
+const mapStateToProps = state => {
+  return {
+    musicLists: state[MODULE_NAME].favoriteMusicList
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageFavoriteMusic)
