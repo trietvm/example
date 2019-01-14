@@ -83,7 +83,7 @@ const defaultTabConfig = {
   )
 }
 
-export default ({ token = undefined, store = {} }) => {
+export default ({ store = {} }) => {
 
   let HomeStack = StackNavigator({
     [SCREENS.VietNamMusicPage]: {

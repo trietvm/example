@@ -66,8 +66,9 @@ class SongItem extends PureComponent {
         </View>
         {isFavorite &&
           <Image
-            style={{marginRight: 5, width: itemHeight * 2 /3, height: itemHeight * 2 / 3, backgroundColor: '#35A85A'}}
-            source={require('../../../assets/Resources/icon_tabbar_like_normal.png')}
+            style={{marginLeft: 10, width: itemHeight /2 , height: itemHeight /2, tintColor: '#35A85A', 
+            alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}
+            source={require('../../../assets/Resources/icon_navigation_bar_already_like.png')}
           />
         }
 

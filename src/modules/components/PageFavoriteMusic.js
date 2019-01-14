@@ -8,7 +8,7 @@ import {
   Modal
 } from 'react-native'
 import { Icon } from 'react-native-elements'
-
+import store from '../../common/store'
 import SongItem from '../../common/components/widgets/SongItem'
 
 const { width } = Dimensions.get('window')
@@ -20,14 +20,25 @@ export default class PageFavoriteMusic extends Component {
     super(props)
     this.onEndReachedCalledDuringMomentum = null
     this.state = {
-      refreshing: false
+      refreshing: false,
+      items: []
     }
+    store.store.subscribe(() => {
+      // When state will be updated(in our case, when items will be fetched), 
+      // we will update local component state and force component to rerender 
+      // with new data.
+      this.setState({
+        items: store.store.getState().main.favoriteMusicList
+      });
+    });
   }
 
   _onRefresh = () => {
   }
 
   componentWillMount() {
+    const { getVietNamMusic } = this.props
+    getVietNamMusic()
   }
 
   _onLoadMore = async () => {
@@ -60,7 +71,7 @@ export default class PageFavoriteMusic extends Component {
   
 
   render() {
-    const { refreshing } = this.state
+    const { refreshing, items } = this.state
     const { musicLists } = this.props
     return (
       <View
@@ -73,7 +84,7 @@ export default class PageFavoriteMusic extends Component {
       >
 
         <FlatList
-          data={this.props.musicLists}
+          data={items}
           refreshing={refreshing}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}

@@ -25,15 +25,15 @@ export default class PageDetailSong extends Component {
     }
   }
 
-  componentDidMount() {
-    const { getSongDetail, songCode, favoriteMusicList, songDetail } = this.props
-    getSongDetail(songCode, favoriteMusicList)
+  componentWillMount() {
+    const { getSongDetail, songCode, favoriteMusicList } = this.props
+    getSongDetail(songCode)
 
     favoriteMusicList.length > 0 && favoriteMusicList.map(item => {
       if(item.songCode === songCode){
         this.setState({focused: true})
       }
-  })
+    })
     // if(songDetail.isLike){
     //   this.setState({focused: true})
     // }
@@ -57,13 +57,13 @@ export default class PageDetailSong extends Component {
   // }
 
   onLike = () => {
-    const { songDetail, favoriteMusicList, toggleLike, toggleNotLike } = this.props
+    const { songCode, favoriteMusicList, toggleLike, toggleNotLike } = this.props
     const { focused } = this.state
     if(!focused){
-      toggleLike(songDetail.songCode, favoriteMusicList)
+      toggleLike(songCode, favoriteMusicList)
     }
     else{
-      toggleNotLike(songDetail.songCode, favoriteMusicList)
+      toggleNotLike(songCode, favoriteMusicList)
     }
     this.setState({
       focused: !focused
@@ -73,13 +73,6 @@ export default class PageDetailSong extends Component {
   render() {
     const { refreshing } = this.state
     const { songDetail } = this.props
-    const { focused } = this.state
-    // if(focused){
-    //   toggleLike(songDetail.songCode, favoriteMusicList)
-    // }
-    // else{
-    //   toggleNotLike(songDetail.songCode, favoriteMusicList)
-    // }
 
     return (
 
@@ -87,7 +80,7 @@ export default class PageDetailSong extends Component {
         styles={{ flexDirection: 'column' }}
       >
         <View style={{ width: '100%' }}>
-          <HeaderTitle onBack={this.onBack} onLike={this.onLike} focused={focused}/>
+          <HeaderTitle onBack={this.onBack} onLike={this.onLike} focused={this.state.focused}/>
         </View>
         <ScrollView
           style={{
