@@ -16,13 +16,14 @@ export default class SingerSongListPage extends Component {
   render () {
     const { navigation } = this.props
     const singerId = navigation.getParam('singerId', {})
+    const singerName = navigation.getParam('singerName', {})
 
     return (
       <DefaultPage
         styles={{ flexDirection: 'column' }}
       >
         <View style={{ width: '100%' }}>
-          <HeaderTitle onBack={this.onBack}/>
+          <HeaderTitle onBack={this.onBack} title={singerName.toUpperCase()}/>
         </View>
         <View style={{ width: '100%', flex: 1 }}>
           <PageSingerSong navigation={navigation} singerId={singerId}/>

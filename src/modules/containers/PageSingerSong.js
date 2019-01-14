@@ -8,12 +8,18 @@ const mapDispatchToProps = (dispatch, props) => ({
     getSingerSong: async (singerId) => {
     var data = require('../../assets/Resources/Singers/Data.json')
     var singerSongs = []
-    singerSongs = data.viSongs.filter(item => {
-        item.singerId === singerId
+    data.viSongs.map(item => {
+        if(item.singerId === singerId){
+            console.log(item)
+            singerSongs.push(item)
+        }
     })
     if(singerSongs.length === 0){
-        singerSongs = data.enSongs.filter(item => {
-            item.singerId === singerId
+        data.enSongs.map(item => {
+            if(item.singerId === singerId){
+                console.log(item)
+                singerSongs.push(item)
+            }
         })
     }
     dispatch(getSingerSong(singerSongs))

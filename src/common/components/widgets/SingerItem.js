@@ -20,7 +20,7 @@ class SingerItem extends PureComponent {
 
   onPress = () => {
     const { navigation, item } = this.props
-    navigation.navigate(SCREENS.SingerSongListPage, { singerId: item.singerId })
+    navigation.navigate(SCREENS.SingerSongListPage, { singerId: item.singerId, singerName: item.singerName })
   }
 
   componentDidMount() {
